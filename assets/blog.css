@@ -76,6 +76,11 @@
 }
 .prose th, .prose td { padding: .55rem .8rem; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
 .prose th { font-weight: 600; border-bottom-color: var(--ink); white-space: nowrap; }
+/* On a phone a squeezed table breaks "165 s" and file names mid-word; give cells
+   a floor and let the table scroll sideways instead. */
+.prose td { min-width: 7.5rem; }
+.prose td:first-child { min-width: 9rem; }
+.prose td code { white-space: nowrap; overflow-wrap: normal; }
 .prose tr:last-child td { border-bottom: 0; }
 
 .prose code { font: .88em/1.5 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; background: var(--raised); border: 1px solid var(--rule); border-radius: 4px; padding: .05em .35em; overflow-wrap: anywhere; }
