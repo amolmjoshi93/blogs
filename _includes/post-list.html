@@ -2,13 +2,19 @@
 <ol class="post-list">
   {%- for post in include.posts -%}
   {%- assign proj = site.projects | where: "slug", post.project | first -%}
-  <li class="post-item">
+  <li class="post-item{% if post.image %} has-cover{% endif %}">
+    {%- if post.image %}
+    <a class="post-item-cover" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ post.image | relative_url }}" width="1200" height="630" alt="" loading="lazy"></a>
+    {%- endif %}
+    <div class="post-item-body">
     <p class="post-item-meta">
       <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+      · {% include reading.html content=post.content %}
       {%- if proj and include.hide_project != true %} · <a href="{{ proj.url | relative_url }}">{{ proj.title }}</a>{% endif %}
     </p>
     <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
     {%- if post.description %}<p class="post-item-desc">{{ post.description | escape }}</p>{% endif %}
+    </div>
   </li>
   {%- endfor -%}
 </ol>

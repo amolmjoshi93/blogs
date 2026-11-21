@@ -11,6 +11,7 @@ layout: default
   <header class="article-head">
     <p class="eyebrow">
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+      · {% include reading.html content=content %}
       {%- if proj %} · {{ proj.title }}{% endif %}
     </p>
     <h1 class="p-name">{{ page.title | escape }}</h1>
@@ -19,6 +20,12 @@ layout: default
     <ul class="tags">{% for t in page.tags %}<li>{{ t }}</li>{% endfor %}</ul>
     {%- endif -%}
   </header>
+
+  {%- if page.image %}
+  <figure class="cover">
+    <img src="{{ page.image | relative_url }}" width="1200" height="630" alt="{{ page.image_alt | default: '' | escape }}" fetchpriority="high">
+  </figure>
+  {%- endif %}
 
   <div class="prose e-content">
     {{ content }}

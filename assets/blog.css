@@ -21,6 +21,9 @@
 .post-item h3 a:hover { text-decoration: underline; }
 .post-item-meta { font-size: .84rem; color: var(--soft); }
 .post-item-meta a { color: var(--accent); text-decoration: none; }
+.post-item-cover { display: block; margin-bottom: 1rem; }
+.post-item-cover img, .cover img { width: 100%; height: auto; aspect-ratio: 1200 / 630; border-radius: 8px; border: 1px solid var(--rule); background: var(--raised); }
+.cover { margin: 0 0 2rem; }
 .post-item-desc { margin-top: .5rem; color: var(--soft); max-width: 65ch; font-size: 1rem; line-height: 1.55; }
 
 .pager { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1.5rem; font-weight: 500; }
@@ -120,6 +123,8 @@
 /* ---- Wider screens ------------------------------------------------------- */
 @media (min-width: 40rem) {
   .blog-hero { padding-block: 4rem 2rem; }
+  .post-item.has-cover { display: grid; grid-template-columns: 14rem 1fr; gap: 1.5rem; align-items: start; }
+  .post-item.has-cover .post-item-cover { margin-bottom: 0; }
   .project-grid { grid-template-columns: repeat(2, 1fr); }
   .post-nav { grid-template-columns: 1fr 1fr; }
   .contact-card { padding: 2rem; }
