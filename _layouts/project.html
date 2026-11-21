@@ -1,0 +1,38 @@
+---
+layout: default
+---
+{%- assign project_posts = site.posts | where: "project", page.slug -%}
+<section class="wrap article">
+  <nav class="crumbs" aria-label="Back">
+    <a href="{{ '/projects/' | relative_url }}">&larr; All projects</a>
+  </nav>
+
+  <header class="project-head">
+    {%- if page.icon %}<img src="{{ page.icon }}" width="72" height="72" alt="" class="ico ico-light">{% endif %}
+    <div>
+      <p class="status"><span class="dot live"></span>{{ page.status | default: "Live" }}</p>
+      <h1>{{ page.title }}</h1>
+      <p class="kicker">{{ page.kicker }}</p>
+    </div>
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {%- if page.tags.size > 0 -%}
+  <ul class="tags">{% for t in page.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+  {%- endif -%}
+  {%- if page.live_url %}
+  <p class="links"><a href="{{ page.live_url }}" rel="noopener">{{ page.live_label | default: page.live_url }} <span aria-hidden="true">↗</span></a></p>
+  {%- endif %}
+
+  <h2 class="list-h">Posts about {{ page.title }} <span class="count">{{ project_posts.size }}</span></h2>
+  {%- if project_posts.size > 0 -%}
+    {% include post-list.html posts=project_posts hide_project=true %}
+  {%- else -%}
+    <p class="empty">Posts are on the way.</p>
+  {%- endif -%}
+
+  {% include contact.html %}
+</section>

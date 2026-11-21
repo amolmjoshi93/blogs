@@ -1,24 +1,44 @@
 ---
-layout: page
+layout: default
 title: About
 permalink: /about/
+description: "About Amol Joshi: tech lead and Ruby on Rails engineer with 11 years on B2B SaaS, fintech and field-service products."
 ---
+<section class="wrap article">
+  <header class="article-head">
+    <p class="eyebrow">About</p>
+    <h1>Amol Joshi</h1>
+    <p class="lede">Tech lead and Ruby on Rails engineer with 11 years on B2B SaaS, fintech and field-service products, including leading a team of 10. I now build and ship my own web and mobile products full time.</p>
+  </header>
 
-This blog records how Smart School is built and why.
+  <div class="prose" markdown="1">
 
-**What gets written here**
+## What this blog is
 
-- **Performance work:** where the time went, how it was measured, and what fixed it.
-- **Decisions:** the options on the table, the one we picked, and the reason.
-- **How the app evolved:** why a part is shaped the way it is, so the next change starts from the reasoning, not
-  just the code.
+Notes from the products I build. Each post covers a real problem: how I measured it, what I changed, what I
+decided not to do, and the numbers before and after. When an idea from the plan didn't survive contact with
+the real system, the post says so and explains why.
 
-**How the posts are written**
+## What I write about
 
-Every post starts from a measurement and ends with one. Claims of "faster" come with the before and after. When
-an idea from the plan didn't survive contact with the real system, the post says so and explains why.
+- **Performance:** slow test suites, slow deploys, N+1 queries, caching, background jobs, big images.
+- **Architecture and decisions:** multi-tenancy, role-based access, API design, why something is built the way
+  it is.
+- **Shipping products end to end:** Rails and Vue on the web, React Native and Android on mobile, payments,
+  PDFs, releases.
+- **AI in production:** LLM features with automated checks, review steps and cost controls, and AI coding
+  agents as part of daily engineering.
 
-**The stack, briefly**
+## Experience, briefly
 
-Rails 8 on Ruby 4 with PostgreSQL, a Vue 3 single-page app served by Rails, Solid Queue for background jobs,
-and an Android WebView shell. Deployed with Kamal.
+- Tech team lead at UtilizeCore, leading 10 engineers on a field-service SaaS platform.
+- Lead engineer on a Ruby 2.7 → 3.2 and Rails 6.1 → 7.2 upgrade: 30% faster responses, 40% more throughput
+  with YJIT.
+- Senior engineer at Saeloun, with 25+ articles on its engineering blog.
+
+The full story, projects and apps are on my [portfolio](https://amolmjoshi93.github.io/).
+
+  </div>
+
+  {% include contact.html %}
+</section>

@@ -1,10 +1,41 @@
 ---
-layout: home
+layout: default
 title: Engineering notes
 ---
+<section class="hero wrap blog-hero">
+  <p class="eyebrow">Engineering notes · Rails · Performance · Architecture · AI product engineering</p>
+  <h1>How real products get built, measured and made <em>faster.</em></h1>
+  <p class="lede">I’m Amol Joshi, a tech lead and Ruby on Rails engineer with 11 years on B2B SaaS, fintech and field-service products. These notes come from products I build and ship: the bottlenecks I hit, how I measured them, what fixed them and why things are built the way they are, with the numbers before and after.</p>
+</section>
 
-<p>Smart School is a school-management platform: attendance, fees, timetables, exams, report cards, ID cards,
-a parent app and more, built with Rails, a Vue single-page app and a thin Android shell.</p>
+<section class="wrap" aria-labelledby="latest-h">
+  <div class="sect">
+    <h2 id="latest-h">Latest posts</h2>
+    <p>Each post starts from a measurement and ends with one.</p>
+  </div>
+  {%- assign list = site.posts -%}
+  {%- if paginator -%}{%- assign list = paginator.posts -%}{%- endif -%}
+  {% include post-list.html posts=list %}
 
-<p>These notes are written as the app evolves. Each one covers a real problem we hit, how we measured it,
-what we changed and what we decided not to do, with the numbers before and after.</p>
+  {%- if paginator.total_pages > 1 -%}
+  <nav class="pager" aria-label="Pages">
+    {%- if paginator.previous_page -%}
+      <a href="{{ paginator.previous_page_path | relative_url }}">&larr; Newer posts</a>
+    {%- else -%}<span></span>{%- endif -%}
+    <span class="pager-pos">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+    {%- if paginator.next_page -%}
+      <a href="{{ paginator.next_page_path | relative_url }}">Older posts &rarr;</a>
+    {%- else -%}<span></span>{%- endif -%}
+  </nav>
+  {%- endif -%}
+</section>
+
+<section class="wrap" aria-labelledby="projects-h">
+  <div class="sect">
+    <h2 id="projects-h">Projects</h2>
+    <p>The products these notes come from. Each project page collects its posts.</p>
+  </div>
+  {% include project-cards.html %}
+</section>
+
+<div class="wrap">{% include contact.html %}</div>

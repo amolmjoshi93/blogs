@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16130f" media="(prefers-color-scheme: dark)">
+{%- seo -%}
+{%- feed_meta -%}
+<link rel="icon" href="https://amolmjoshi93.github.io/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="https://amolmjoshi93.github.io/assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://amolmjoshi93.github.io/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+{%- comment -%} The portfolio's own stylesheet, so the blog always matches it; blog.css adds only what posts need. {%- endcomment -%}
+<link rel="stylesheet" href="https://amolmjoshi93.github.io/assets/style.css">
+<link rel="stylesheet" href="{{ '/assets/blog.css' | relative_url }}">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top wrap">
+  <a class="mark" href="{{ site.author.portfolio }}" aria-label="Amol Joshi, portfolio">Amol Joshi</a>
+  <nav aria-label="Primary">
+    <a href="{{ '/' | relative_url }}"{% if page.url == '/' or page.layout == 'post' %} aria-current="page"{% endif %}>Blog</a>
+    <a href="{{ '/projects/' | relative_url }}"{% if page.url contains '/projects/' %} aria-current="page"{% endif %}>Projects</a>
+    <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+    <a href="{{ site.author.portfolio }}">Portfolio <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+{{ content }}
+</main>
+
+<footer class="wrap foot">
+  <p>© {{ site.time | date: "%Y" }} Amol Joshi · <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+  <p><a href="{{ site.author.portfolio }}">amolmjoshi93.github.io</a> · <a href="{{ '/feed.xml' | relative_url }}">RSS</a></p>
+</footer>
+</body>
+</html>

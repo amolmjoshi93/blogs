@@ -2,6 +2,7 @@
 layout: post
 title: "From a 25-minute release to under 3: Docker layer caching, one image for two environments, and a 1.96 GB image"
 description: "Our release built the same code twice and reinstalled every gem every time. Moving one environment variable, proving staging and production builds were byte-identical, and deleting 27 unused PDF binaries took a release from ~25 minutes to ~2.5."
+project: smart-school
 tags: [performance, deploys, docker, kamal]
 ---
 

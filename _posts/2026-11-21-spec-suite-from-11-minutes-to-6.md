@@ -2,6 +2,7 @@
 layout: post
 title: "Our test suite went from 64 seconds to 11 minutes. Here's how we took 4 minutes back."
 description: "Factory setup was 72% of the run. Sharing one pre-seeded school per worker, a bulk role seed and runtime-balanced workers took the full suite from 10:49 to 6:41, with no tests deleted."
+project: smart-school
 tags: [performance, testing, rspec]
 ---
 

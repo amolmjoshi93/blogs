@@ -1,0 +1,12 @@
+<div class="grid project-grid">
+  {%- assign projects = site.projects | sort: "order" -%}
+  {%- for p in projects -%}
+  {%- assign n = site.posts | where: "project", p.slug | size -%}
+  <article class="card">
+    {%- if p.icon %}<img src="{{ p.icon }}" width="48" height="48" alt="" class="ico ico-light" loading="lazy">{% endif %}
+    <h4><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h4>
+    <p>{{ p.kicker }}</p>
+    <p class="meta">{{ n }} post{% if n != 1 %}s{% endif %}</p>
+  </article>
+  {%- endfor -%}
+</div>

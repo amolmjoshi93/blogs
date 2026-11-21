@@ -1,0 +1,14 @@
+{%- comment -%} Renders include.posts as a list of post cards. {%- endcomment -%}
+<ol class="post-list">
+  {%- for post in include.posts -%}
+  {%- assign proj = site.projects | where: "slug", post.project | first -%}
+  <li class="post-item">
+    <p class="post-item-meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+      {%- if proj and include.hide_project != true %} · <a href="{{ proj.url | relative_url }}">{{ proj.title }}</a>{% endif %}
+    </p>
+    <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+    {%- if post.description %}<p class="post-item-desc">{{ post.description | escape }}</p>{% endif %}
+  </li>
+  {%- endfor -%}
+</ol>

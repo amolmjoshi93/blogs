@@ -1,26 +1,44 @@
-title: Building Smart School
+title: Amol Joshi — Engineering notes
 description: >-
-  Engineering notes from Smart School, a school-management platform: how the app
-  evolved, the performance bottlenecks we hit and fixed, and why things are built
-  the way they are.
+  Engineering notes by Amol Joshi, tech lead and Ruby on Rails engineer: performance work, architecture
+  decisions and how real products evolve, from Rails and Vue to mobile apps and AI features.
+author:
+  name: Amol Joshi
+  email: apnaprogrammer@gmail.com
+  portfolio: https://amolmjoshi93.github.io/
 baseurl: /blogs
 url: https://amolmjoshi93.github.io
 timezone: Asia/Kolkata
-theme: minima
 future: true
 permalink: /:year/:month/:day/:title/
 markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+
+# Projects each post can belong to (front matter `project: <slug>`); one page per project.
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "", type: projects }
+    values: { layout: project }
+
 # Home page lists 10 posts per page (/page2/, /page3/, ...).
 paginate: 10
 paginate_path: "/page:num/"
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-paginate
-minima:
-  date_format: "%-d %B %Y"
-header_pages:
-  - about.md
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
