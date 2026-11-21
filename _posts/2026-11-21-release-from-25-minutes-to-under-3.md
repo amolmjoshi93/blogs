@@ -5,9 +5,8 @@ description: "Our release built the same code twice and reinstalled every gem ev
 tags: [performance, deploys, docker, kamal]
 ---
 
-Smart School runs staging and production on **one ARM server**. A release means deploying staging, checking it,
-then deploying production with the same code. One at a time, never both at once, because the same machine both
-builds the images and serves real schools.
+A Smart School release means deploying staging, checking it, then deploying production with the same code.
+Production only goes out once staging has been checked, so the two deploys happen one after the other.
 
 In November a release took about **25 minutes**: 11–15 for staging, then the same again for production. This
 post covers how it got to **about 2.5 minutes**, plus one idea from the plan that didn't survive contact with the
@@ -17,8 +16,8 @@ tools.
 
 We deploy with [Kamal](https://kamal-deploy.org/). For each environment it:
 
-1. **Builds** a Docker image on the server (the server is ARM; cross-building on an x86 laptop was slow and ran
-   out of memory),
+1. **Builds** a Docker image natively on a remote ARM build host (cross-building ARM on an x86 laptop was slow
+   and ran out of memory),
 2. **Pushes** it to a container registry,
 3. **Pulls** it back, starts the new container, waits for the health check and switches traffic,
 4. Runs **hooks** before and after.
@@ -77,8 +76,8 @@ server between builds, outside the image, so when a lockfile *does* change, only
 downloaded. One detail: don't `rm -rf` a cache mount's directory in the same step, or you've just emptied the
 cache you meant to keep.
 
-We also raised the cache trim to 20 GB, and made it run after production deploys too. Both environments share
-one builder, so the old staging-only trim had let production's cache grow unchecked.
+We also raised the build-cache trim to 20 GB and made it run after production deploys too, so the layers both
+environments now reuse stay cached instead of being evicted after every deploy.
 
 ## Problem 2: a bigger image than needed
 
@@ -163,7 +162,7 @@ Two details matter:
 - **There's an escape hatch** (`ALLOW_UNSTAGED_PRODUCTION=1`) for the day staging itself is down and production
   needs a fix.
 
-We tested all five cases against the live server: same commit passes, different commit is blocked, rollback
+We tested all five cases against the live deployment: same commit passes, different commit is blocked, rollback
 passes, override passes, staging is unaffected.
 
 ## Problem 4: 27 PDF programs we never run
@@ -210,24 +209,24 @@ Image: **2.84 GB → 1.96 GB.** Installed gems: **787 MB → 367 MB.**
 
 ## What we decided not to do
 
-- **Deploy staging and production in parallel.** One machine builds and serves both; a release competing with
-  real users for CPU isn't worth a few minutes.
-- **Run a registry on the server instead of a hosted one.** That was the plan's last phase, meant to save upload
-  time. Production's push now takes 10 seconds, so there's little left to save. The hosted registry also keeps a
-  copy of every release off the server, which is what you roll back from if the server is ever lost.
-- **Build on a laptop.** The server is ARM; cross-building was slower and ran out of memory.
+- **Deploy staging and production in parallel.** Production deploys only what staging has run and been checked
+  on; doing both at once would defeat the point of staging.
+- **Run a self-hosted registry instead of a hosted one.** That was the plan's last phase, meant to save upload
+  time. Production's push now takes 10 seconds, so there's little left to save. The hosted registry also keeps an
+  off-site copy of every release, which is what you roll back from if a machine is ever lost.
+- **Build on a laptop.** The images are ARM; cross-building was slower and ran out of memory.
 
-## If the servers change later
+## Why the design holds up
 
 All of this rests on one rule: **one image per commit, nothing environment-specific inside it, promoted from
-staging to production.** That holds up well:
+staging to production.** That rule doesn't depend on how the infrastructure is laid out:
 
 - **Branches don't matter to Kamal.** It builds the checked-out commit and tags the image with its hash. Whether
   production follows `main`, a release branch or tags, the guard still checks "same commit as staging".
-- **Production on its own server** just pulls from the registry, which is one more reason to keep a hosted
-  registry rather than one on the staging machine.
-- **The one thing that breaks it is a different CPU type.** An x86 production server can't run ARM images. Keep
-  both on the same architecture, or accept a multi-architecture build.
+- **Hosts don't matter either.** Any host pulls the image from the registry; nothing in the image ties it to a
+  machine or an environment. That's one more reason to keep a hosted registry.
+- **The one thing that breaks it is a different CPU type.** An x86 host can't run ARM images. Keep every
+  environment on the same architecture, or accept a multi-architecture build.
 
 ## Takeaways
 

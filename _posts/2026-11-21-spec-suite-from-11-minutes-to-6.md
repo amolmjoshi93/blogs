@@ -145,7 +145,7 @@ The suite's wall time is also printed after every pre-push run, so a regression 
 
 ## What we didn't do
 
-- **Run more workers.** The machine is shared; six is the agreed ceiling.
+- **Run more workers.** Six is our agreed ceiling for the machine the suite runs on.
 - **Put RSpec back on CI.** That trade was made on purpose.
 - **Skip or delete slow tests that catch real bugs.** The fix was cheaper setup, not less coverage.
 - **Delete the legacy-screen tests yet.** About 121 request-spec files cover classic server-rendered screens
