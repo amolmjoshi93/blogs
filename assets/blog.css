@@ -99,7 +99,7 @@
 .contact-card { margin-top: 3rem; padding: 1.5rem; background: var(--raised); border: 1px solid var(--rule); border-radius: 8px; }
 .contact-card h2 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
 .contact-card > p:not(.contact-email, .links) { margin-top: .6rem; color: var(--soft); max-width: 60ch; }
-.contact-email { font: 600 clamp(1.15rem, 5vw, 1.6rem)/1.3 var(--serif); margin-top: 1rem; overflow-wrap: anywhere; }
+.contact-email { font: 600 clamp(1rem, 4.4vw, 1.6rem)/1.3 var(--serif); margin-top: 1rem; overflow-wrap: anywhere; }
 .contact-email a { color: var(--accent); }
 
 /* ---- Previous / next ----------------------------------------------------- */
