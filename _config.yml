@@ -1,0 +1,22 @@
+title: Building Smart School
+description: >-
+  Engineering notes from Smart School, a school-management platform: how the app
+  evolved, the performance bottlenecks we hit and fixed, and why things are built
+  the way they are.
+baseurl: /blogs
+url: https://amolmjoshi93.github.io
+timezone: Asia/Kolkata
+theme: minima
+future: true
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+minima:
+  date_format: "%-d %B %Y"
+header_pages:
+  - about.md

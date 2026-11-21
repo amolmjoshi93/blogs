@@ -1,0 +1,10 @@
+---
+layout: home
+title: Engineering notes
+---
+
+Smart School is a school-management platform: attendance, fees, timetables, exams, report cards, ID cards,
+a parent app and more, built with Rails, a Vue single-page app and a thin Android shell.
+
+These notes are written as the app evolves. Each one covers a real problem we hit, how we measured it,
+what we changed and what we decided not to do, with the numbers before and after.
