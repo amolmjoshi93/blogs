@@ -49,6 +49,7 @@
 .list-h { font-size: clamp(1.4rem, 5vw, 1.9rem); margin-top: 3rem; margin-bottom: 1rem; display: flex; align-items: baseline; gap: .6rem; }
 .count { font: 500 .9rem var(--sans); color: var(--soft); }
 .empty { color: var(--soft); }
+.about-role { margin-top: .5rem; margin-bottom: 0; font-weight: 500; }
 
 /* ---- Long-form text: the portfolio CSS resets margins and lists --------- */
 .prose { max-width: 70ch; overflow-wrap: break-word; }
