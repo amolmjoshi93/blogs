@@ -4,6 +4,7 @@
    are for phones, min-width queries add the wider layouts. */
 
 .top nav { flex-wrap: wrap; justify-content: flex-end; }
+.js .top nav.open a[aria-current="page"] { color: var(--accent); }
 .top nav a[aria-current="page"] { color: var(--ink); }
 
 /* ---- Home ------------------------------------------------------------- */

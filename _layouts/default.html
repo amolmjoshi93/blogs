@@ -13,13 +13,15 @@
 {%- comment -%} The portfolio's own stylesheet, so the blog always matches it; blog.css adds only what posts need. {%- endcomment -%}
 <link rel="stylesheet" href="https://amolmjoshi93.github.io/assets/style.css">
 <link rel="stylesheet" href="{{ '/assets/blog.css' | relative_url }}">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="top wrap">
   <a class="mark" href="{{ site.author.portfolio }}" aria-label="Amol Joshi, portfolio">Amol Joshi</a>
-  <nav aria-label="Primary">
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span class="bars" aria-hidden="true"></span></button>
+  <nav id="site-nav" aria-label="Primary">
     <a href="{{ '/' | relative_url }}"{% if page.url == '/' or page.layout == 'post' %} aria-current="page"{% endif %}>Blog</a>
     <a href="{{ '/projects/' | relative_url }}"{% if page.url contains '/projects/' %} aria-current="page"{% endif %}>Projects</a>
     <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
@@ -35,5 +37,6 @@
   <p>© {{ site.time | date: "%Y" }} Amol Joshi · <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
   <p><a href="{{ site.author.portfolio }}">amolmjoshi93.github.io</a> · <a href="{{ '/feed.xml' | relative_url }}">RSS</a></p>
 </footer>
+<script src="https://amolmjoshi93.github.io/assets/menu.js" defer></script>
 </body>
 </html>
