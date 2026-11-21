@@ -1,0 +1,79 @@
+---
+# Front matter tells Jekyll to compile this file.
+---
+
+@import "minima";
+
+// --- Post navigation: back link + previous/next -------------------------
+
+.post-back {
+  margin-bottom: 16px;
+  font-size: 15px;
+
+  a { text-decoration: none; }
+}
+
+.post-back-bottom { margin-top: 24px; }
+
+.post-nav {
+  display: grid;
+  grid-template-columns: 1fr;   // mobile first: stacked
+  gap: 12px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.post-nav-link {
+  display: block;
+  padding: 12px 16px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 150ms ease;
+
+  &:hover { border-color: #2a7ae2; text-decoration: none; }
+}
+
+.post-nav-label {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #828282;
+}
+
+.post-nav-title {
+  display: block;
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+
+.post-nav-next { text-align: right; }
+
+@media (min-width: 640px) {
+  .post-nav { grid-template-columns: 1fr 1fr; }
+}
+
+// --- Phones: wide tables and code scroll inside their own box -----------
+
+.post-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.post-content pre,
+.post-content .highlight {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+// --- Home page paging -----------------------------------------------------
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}

@@ -21,5 +21,4 @@ an idea from the plan didn't survive contact with the real system, the post says
 **The stack, briefly**
 
 Rails 8 on Ruby 4 with PostgreSQL, a Vue 3 single-page app served by Rails, Solid Queue for background jobs,
-and an Android WebView shell. Deployed with Kamal to a single ARM server that hosts both staging and
-production.
+and an Android WebView shell. Deployed with Kamal.

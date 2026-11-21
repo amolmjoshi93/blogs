@@ -13,9 +13,13 @@ markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+# Home page lists 10 posts per page (/page2/, /page3/, ...).
+paginate: 10
+paginate_path: "/page:num/"
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-paginate
 minima:
   date_format: "%-d %B %Y"
 header_pages:
