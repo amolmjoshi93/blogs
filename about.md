@@ -1,15 +1,14 @@
 ---
 layout: default
-title: About
+title: About me
 permalink: /about/
 description: "About Amol Joshi: AI-first product owner and AI solution architect, with 11 years of engineering and technical leadership behind it."
 ---
 <section class="wrap article">
   <header class="article-head">
-    <p class="eyebrow">About</p>
-    <h1>Amol Joshi</h1>
+    <h1>About me</h1>
     <p class="kicker about-role">AI-first Product Owner · AI Solution Architect</p>
-    <p class="lede">I own and architect AI-enabled web and mobile products end to end: the product decisions, the system design, LLM features with guardrails and cost controls, and the release. AI coding agents are part of how I build every day. That rests on 11 years of engineering and technical leadership on SaaS, fintech and field-service platforms, including leading a team of 10.</p>
+    <p class="lede">I’m Amol Joshi. I own and architect AI-enabled web and mobile products end to end: the product decisions, the system design, LLM features with guardrails and cost controls, and the release. AI coding agents are part of how I build every day. That rests on 11 years of engineering and technical leadership on SaaS, fintech and field-service platforms, including leading a team of 10.</p>
   </header>
 
   <div class="prose" markdown="1">

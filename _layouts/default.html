@@ -19,12 +19,11 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="top wrap">
-  <a class="mark" href="{{ site.author.portfolio }}" aria-label="Amol Joshi, portfolio">Amol Joshi</a>
+  <a class="mark" href="{{ '/' | relative_url }}" aria-label="Blogs, home">Blogs</a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span class="bars" aria-hidden="true"></span></button>
   <nav id="site-nav" aria-label="Primary">
-    <a href="{{ '/' | relative_url }}"{% if page.url == '/' or page.layout == 'post' %} aria-current="page"{% endif %}>Blog</a>
     <a href="{{ '/projects/' | relative_url }}"{% if page.url contains '/projects/' %} aria-current="page"{% endif %}>Projects</a>
-    <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+    <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About me</a>
     <a href="{{ site.author.portfolio }}">Portfolio <span aria-hidden="true">↗</span></a>
   </nav>
 </header>
